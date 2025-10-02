@@ -48,8 +48,14 @@ title: Catálogo de Juegos de Scratch
   {% for juego in site.juegos %}
     <div class="game-card">
       <a href="{{ juego.url | relative_url }}">
+        <img 
+            src="https://cdn2.scratch.mit.edu/get_image/project/{{ juego.scratch_id }}_480x360.png" 
+            alt="Miniatura del juego: {{ juego.title }}" 
+            class="game-thumbnail" 
+            onerror="this.onerror=null;this.src='{{ '/assets/default-thumbnail.png' | relative_url }}';"
+          >
         <h2>{{ juego.title }}</h2>
-        <p>Creado por: **{{ juego.author }}**</p>
+        <p>Creado por: {{ juego.author }}</p>
         <p>{{ juego.description | truncatewords: 15 }}</p>
         
         <button style="background-color: #f7a013; color: white; padding: 5px 10px; border: none; border-radius: 4px; margin-top: 10px;">

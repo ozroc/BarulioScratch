@@ -105,3 +105,8 @@ footer_links:
   - title: Feed
     url: atom.xml
     icon: fas fa-rss-square
+    
+collections:
+  juegos: # Nombre de la colección (la carpeta será _juegos)
+    output: true # Esto asegura que Jekyll crea una URL real para cada juego
+    permalink: /juegos/:path/ # Define la estructura de las URL, ej: /juegos/laberinto/

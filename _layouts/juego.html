@@ -1,0 +1,80 @@
+---
+layout: default # Usa tu layout principal (si tienes) o simplemente 'null'
+---
+
+<style>
+  /* Estilos básicos para la página del juego */
+  .game-container {
+    text-align: center;
+    max-width: 800px; /* Ajusta según el tamaño típico de un juego de Scratch */
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  .scratch-iframe {
+    width: 100%;
+    height: 500px; /* Altura recomendada para el reproductor de Scratch */
+    border: none;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .vote-button {
+    background-color: #4CAF50; /* Un color verde amigable */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .vote-button:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<div class="game-container">
+  <h1>{{ page.title }}</h1>
+  
+  <p>Creado por: <strong>{{ page.author }}</strong></p>
+  
+  {% if page.description %}
+    <p>{{ page.description }}</p>
+  {% endif %}
+
+  {% if page.scratch_id %}
+    <iframe 
+      src="https://scratch.mit.edu/projects/{{ page.scratch_id }}/embed" 
+      class="scratch-iframe" 
+      allowtransparency="true" 
+      frameborder="0" 
+      scrolling="no" 
+      allowfullscreen
+    ></iframe>
+  {% else %}
+    <p>¡Error! No se ha especificado el ID del proyecto de Scratch.</p>
+  {% endif %}
+
+  {% if site.vote_link %}
+    <a href="{{ site.vote_link }}" target="_blank">
+      <button class="vote-button">
+        Votar como Favorito 🌟
+      </button>
+    </a>
+    <p><small>Serás dirigido a un formulario externo para votar.</small></p>
+  {% else %}
+    <button class="vote-button" onclick="alert('¡Gracias por votar! (Funcionalidad de voto no activa en esta demo)')">
+      Votar como Favorito 🌟
+    </button>
+    <p><small>Contacta al profesor para votar.</small></p>
+  {% endif %}
+
+</div>
